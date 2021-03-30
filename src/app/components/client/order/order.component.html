@@ -1,0 +1,62 @@
+<mat-card *ngIf="order.orderLines && order.orderLines.length > 0" class="table-responsive">
+   <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Вес</th>
+                <th scope="col" class="text-center">Цена</th>
+                <th scope="col" colspan="3" class="text-center">Количество</th>
+                <th scope="col"class="text-center">Сумма</th>
+                <th scope="col" class="text-center"></th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let orderLine of order.orderLines">
+                <td >{{orderLine.dish.nameDish}}</td>
+                <td>{{orderLine.dish.weight}}</td>
+                <td class="text-center">{{orderLine.dish.price}}</td>
+                <td class="text-end">
+                    <span (click)='removeCounPortions(orderLine.dish.id)' role="button" class="link-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+                        </svg>
+                    </span>
+                </td>
+                <td class="text-center">{{orderLine.countPortions}}</td>
+                <td class="text-start">
+                    <span (click)='addCounPortions(orderLine.dish.id)' role="button" class="link-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                    </span>
+                </td>
+                <td class="text-center">{{orderLine.dish.price * orderLine.countPortions}}</td>
+                <td class="text-center">
+                    <span (click)='removeDish(orderLine.dish.id)' role="button" class="link-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-excel-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5.884 4.68L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 1 1 .768-.64z"/>
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+       </tbody>
+       <tfoot>
+           <tr class="lh-lg fw-bold fs-5">
+                <td colspan="7" class="text-end">Сумма:</td>
+                <td colspan="1" class="text-center">{{orderAmount}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-between mx-5">
+        <div>
+            <label class="text-decoration-underline">Количество гостей:</label>
+            <input type="number" [formControl]="numberGuests" class="ms-3 w-25" placeholder="Кол. гостей">
+        </div>  
+        <button (click)="confirmOrder()" [disabled]="!numberGuests.valid" type="button" class="btn btn-success ">Подтвердить
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 20">
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+            </svg>
+        </button>
+    </div>
+</mat-card>

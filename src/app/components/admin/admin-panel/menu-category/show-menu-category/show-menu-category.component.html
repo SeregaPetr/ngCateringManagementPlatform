@@ -1,0 +1,27 @@
+<mat-card class="table-responsive">
+    <mat-card-title >Категории меню</mat-card-title >
+    <div class="mb-2">
+        <!-- Button trigger modal -->
+        <app-add-button [text]="'Создать'" (addClickEvent)="addClick()"></app-add-button>
+    </div>
+
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let menuCategory of menuCategories">
+                <td>{{menuCategory.nameCategory}}</td>
+                <td>
+                    <div>
+                        <app-edit-button (editClickEvent)="editClick(menuCategory)"></app-edit-button>
+                        <app-delete-button (deleteClickEvent)="deleteClick(menuCategory.id)"></app-delete-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>

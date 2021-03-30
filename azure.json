@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "app": {
+        "project": "ng-CateringManagementPlatform",
+        "target": "build",
+        "configuration": "production",
+        "path": "dist/ng-CateringManagementPlatform"
+      },
+      "azureHosting": {
+        "subscription": "3d7a62a9-7f4a-42d7-9762-16c1bd26c596",
+        "resourceGroupName": "ng-CateringManagementPlatform-static-deploy",
+        "account": "ngcateringmanagemestatic"
+      }
+    }
+  ]
+}

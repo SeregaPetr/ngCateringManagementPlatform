@@ -1,0 +1,49 @@
+<mat-card *ngIf="haveOrdersForGuest" class="table-responsive">
+    <div class="d-flex justify-content-around">
+        <p>Официант: {{nameWaiter}}</p>
+        <p>{{statusOrder}}</p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col" class="text-center">Цена</th>
+                <th scope="col" class="text-center">Количество</th>
+                <th scope="col" class="text-center">Сумма</th>
+                <th scope="col" class="text-center">Статус заказа</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let orderLine of orderLinesForGuest">
+                <td class="">{{orderLine.nameDish}}</td>
+                <td class="text-center">{{orderLine.priceDish}}</td>
+                <td class="text-center">{{orderLine.countPortions}}</td>
+                <td class="text-center">{{orderLine.countPortions * orderLine.priceDish}}</td>
+                <td class="text-center">{{orderLine.nameStatus}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="lh-lg fw-bold fs-5">
+                 <td colspan="4" class="text-end">Сумма:</td>
+                 <td colspan="1" class="text-start">{{orderAmount}}</td>
+             </tr>
+         </tfoot>
+    </table>
+    <!-- <div class="d-grid d-md-flex justify-content-md-between mx-5"> -->
+        <!-- <button type="button" class="btn btn-info">Вызвать официанта</button> -->
+        <div class="btn-group dropup">
+            <button type="button" [disabled]='allDishesServed' 
+                class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Оплатить
+            </button>
+            <ul class="dropdown-menu" >
+                <li *ngFor="let paymentType of paymentTypes">
+                    <button class="dropdown-item" type="button"
+                        (click)='pay(paymentType.id)'>
+                        {{paymentType.namePaymentType}}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    <!-- </div> -->
+</mat-card>  

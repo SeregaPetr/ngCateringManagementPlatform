@@ -1,0 +1,17 @@
+<form class="example-form d-grid gap-3 col-12 mx-auto primary">
+  <div class="">
+    <mat-form-field class="form-control">
+      <mat-label>Логин</mat-label>
+      <input type="email" matInput placeholder="user@email.com" #email >
+    </mat-form-field>
+  </div>
+  <div class="">
+    <mat-form-field class="form-control">
+      <mat-label>Пароль</mat-label>
+      <input type="password" matInput #password >
+    </mat-form-field>
+  </div>
+    <button mat-flat-button color="primary" class="btn btn-primary" data-bs-dismiss="modal"
+      (click)='login(email.value, password.value)'>Войти
+    </button>
+</form>

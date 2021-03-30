@@ -1,0 +1,10 @@
+<form>
+    <div class="form-check" *ngFor="let checkboxItem of checkboxItems">
+        <input class="form-check-input" type="checkbox" [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="checkboxItem.checked">
+        <label class="form-check-label">{{checkboxItem.name}}</label>
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="checkedDishes()" [disabled]="false">Подтвердить
+    </button>
+</form>

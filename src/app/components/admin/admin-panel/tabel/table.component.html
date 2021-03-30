@@ -1,0 +1,15 @@
+<!-- Modal -->
+<app-modal [modalTitle]="modalTitle" (closeClickEvent)="close()">
+    <div *ngIf='activateAddEditComp'>
+        <app-add-table *ngIf="!table.id" [table]="table"
+            (closeClickEvent)="close()" (createClickEvent)="createUpdate()">
+        </app-add-table>
+        <app-edit-table *ngIf="table.id" [table]="table" 
+            (closeClickEvent)="close()" (updateClickEvent)="createUpdate()">
+        </app-edit-table>
+    </div>
+</app-modal>
+
+<app-show-table [tables]="tables" (deleteClickEvent)="deleteTable($event)"
+    (editClickEvent)="editTable($event)" (addClickEvent)="addTable()">
+</app-show-table>

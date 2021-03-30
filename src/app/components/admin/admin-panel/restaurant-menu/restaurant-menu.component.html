@@ -1,0 +1,8 @@
+<mat-card class="table-responsive ">
+    <mat-card-title >{{title}}</mat-card-title >
+
+    <app-show-restaurant-menu [menus]="menus" (makeActiveClickEvent)="makeActiveMenu($event)" 
+        (deleteClickEvent)="deleteMenu($event)" (editClickEvent)="editMenu($event)">
+    </app-show-restaurant-menu>
+    
+</mat-card>

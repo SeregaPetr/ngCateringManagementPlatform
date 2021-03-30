@@ -1,0 +1,32 @@
+<div class="responseive ">
+<div class="container menu-component" *ngIf="menu">
+    <h1 class="text-center my-4 fw-bold">{{menu.nameMenu}}</h1>
+    <div class="row fw-bold " *ngFor="let category of menu.menuCategories">
+        <div class="col text-center px-3 ">
+            <p class="menu-category">{{category.nameCategory}}</p>
+            <div class="row align-items-center" *ngFor="let dish of category.dishes">
+                <div class="col text-start ">{{dish.nameDish}}
+                    <p class="menu-composition-dish fw-lighter">
+                        {{dish.compositionDish}}
+                    </p>
+                </div>
+                <div class="col-2 menu-dish-weight"> {{dish.weight}}</div>
+                <div class="col-2">{{dish.price}}</div>
+                <div class="col-2 text-end" *ngxPermissionsOnly = "['User']">
+                    <button type="button" class="btn btn-outline-success" [disabled]="paymentStatus"
+                        (click)="addDish(dish)">Выбрать
+                    </button>
+                </div>
+            </div>   
+        </div>
+        <hr class="menu-hr">  
+    </div>
+</div>
+
+<div *ngIf="!menu">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar >
+    </div>
+    
+</div>
+
+

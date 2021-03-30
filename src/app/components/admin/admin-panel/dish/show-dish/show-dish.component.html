@@ -1,0 +1,36 @@
+<mat-card class="table-responsive ">
+    <mat-card-title >Блюда</mat-card-title >
+    <div class="mb-2">
+        <!-- Button trigger modal -->
+        <app-add-button [text]="'Создать'"(addClickEvent)="addClick()"></app-add-button>
+    </div>
+
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Состав</th>
+                <th scope="col">Вес</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Отдел</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let dish of dishes">
+                <td class="text-center">{{dish.nameDish}}</td>
+                <td>{{dish.compositionDish}}</td>
+                <td>{{dish.weight}}</td>
+                <td>{{dish.price}}</td>
+                <td>{{dish.department.nameDepartment}}</td>
+                <td>
+                    <div>
+                        <app-edit-button (editClickEvent)="editClick(dish)"></app-edit-button>
+                        <app-delete-button (deleteClickEvent)="deleteClick(dish.id)"></app-delete-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>
+

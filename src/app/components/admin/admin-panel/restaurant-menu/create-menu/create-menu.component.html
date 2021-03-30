@@ -1,0 +1,45 @@
+<!-- Modal -->
+<app-modal [modalTitle]="modalTitle" (closeClickEvent)="close()">
+    <div *ngIf='activateAddMenuCategoryToMenuComp'>
+        <app-choice-menu-category [menu]="menu" 
+            (closeClickEvent)="close()" (confirmChoiceEvent)="createUpdate()">
+        </app-choice-menu-category>
+    </div>
+
+    <div *ngIf='activateAddDishToMenuComp'>
+        <app-choice-dish [menu]="menu" [menuCategory]="menuCategory">
+            (closeClickEvent)="close()" (confirmChoiceEvent)="createUpdate()">
+        </app-choice-dish>
+    </div>
+</app-modal>
+
+
+<div class="container menu-component" *ngIf="menu">
+    <div class="d-flex justify-content-center">
+        <h1 class="text-center fw-bold me-5">{{menu.nameMenu}}</h1>
+        <app-add-button class="text-center" [text]="'Добавить категории'"
+            (addClickEvent)="addMenuCategoryToMenu()">
+        </app-add-button> 
+    </div>
+    <div class="row fw-bold" *ngFor="let category of menu.menuCategories">
+        <div class="col text-center px-3 ">
+            <div class="d-flex justify-content-center">
+                <p class="menu-category me-5">{{category.nameCategory}}</p>
+                <app-add-button [text]="'Добавить блюда'" 
+                    (addClickEvent)="addDishToMenu(category)">
+                </app-add-button>
+            </div>
+            <div class="row align-items-center" *ngFor="let dish of category.dishes">
+                <div class="col text-start ">{{dish.nameDish}}
+                    <p class="menu-composition-dish fw-lighter">
+                        {{dish.compositionDish}}
+                    </p>
+                </div>
+                <div class="col-2 menu-dish-weight"> {{dish.weight}}</div>
+                <div class="col-2">{{dish.price}}</div>
+            </div>   
+        </div>
+        <hr class="menu-hr">  
+    </div>
+</div>
+

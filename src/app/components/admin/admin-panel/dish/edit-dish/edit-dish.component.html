@@ -1,0 +1,30 @@
+<form [formGroup]="dishForm">
+    <div class="mb-3">
+      <label for="dishName" class="form-label">Название</label>
+      <input type="text" formControlName="nameDish" class="form-control" id="dishName">
+    </div>
+    <div class="mb-3">
+      <label for="dishComposition" class="form-label">Состав</label>
+      <input type="text" formControlName="compositionDish" class="form-control"  id="dishComposition">
+    </div>
+    <div class="mb-3">
+        <label for="dishWeight" class="form-label">Вес</label>
+        <input type="number" formControlName="weight" class="form-control"  id="dishWeight">
+    </div>
+    <div class="mb-3">
+        <label for="dishPrice" class="form-label">Цена</label>
+        <input type="number" formControlName="price" class="form-control"  id="dishPrice">
+    </div>
+    
+    <div class="mb-3">
+        <select class="form-select" formControlName="departmentId" aria-label="Departmens">
+            <option *ngFor="let department of departments" [ngValue]="department.id">
+                {{department.nameDepartment}}
+            </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="updateDish()" [disabled]="!dishForm.valid">Обновить
+    </button>
+</form>
+

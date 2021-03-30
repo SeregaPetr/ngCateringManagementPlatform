@@ -1,0 +1,63 @@
+  <div class="topnav d-flex justify-content-between align-items-center">
+    
+    <div>
+      <a [routerLink]="['']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}">Меню</a>
+    </div>
+
+    <div *ngxPermissionsOnly = "['User']" > 
+      <a [routerLink]="['/order']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Подтвердить заказ</a>
+    </div>
+
+    <div *ngxPermissionsOnly = "['User']" > 
+      <a [routerLink]="['/order-status']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Статус заказа</a>
+    </div> 
+    
+    <div *ngxPermissionsOnly = "['Admin', 'Barman']" > 
+      <a [routerLink]="['/bar']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Бар</a>
+    </div> 
+
+    <div *ngxPermissionsOnly = "['Admin', 'Chef']" > 
+      <a [routerLink]="['/kitchen']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Кухня</a>
+    </div> 
+
+    <div *ngxPermissionsOnly = "['Admin', 'Waiter']" > 
+      <a [routerLink]="['/waiter']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Официанты</a>
+    </div> 
+    
+    <div *ngxPermissionsOnly = "['Admin', 'Waiter']" > 
+      <a [routerLink]="['/payment']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Оплата</a>
+    </div> 
+
+    <div *ngxPermissionsOnly = "['Admin']" > 
+      <a [routerLink]="['/tables-info']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Столы</a>
+    </div> 
+
+    <div *ngxPermissionsOnly = "['Admin']" > 
+      <a [routerLink]="['/admin']" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" >Админ панель</a>
+    </div> 
+
+    <div>
+      <div *ngIf='!isLoggedIn'>
+        <button type="button" class="btn btn-primary m-2 btn-sm"
+          data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)='login()'>
+            Войти
+        </button>
+      </div>
+      <div *ngIf='isLoggedIn'>
+        <button type="button" class="btn btn-danger m-2 btn-sm" (click)='logout()'>
+          Выйти
+        </button>
+      </div>
+    </div>
+
+</div>
+<div class="table-responsive">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Modal -->
+<app-modal [modalTitle]="modalTitle" (closeClickEvent)="closeClick()">
+    <div *ngIf='activateLoginComp'>
+      <app-login (closeClickEvent)="closeClick()" (loginClickEvent)="loginClick()"></app-login>
+    </div>
+</app-modal>

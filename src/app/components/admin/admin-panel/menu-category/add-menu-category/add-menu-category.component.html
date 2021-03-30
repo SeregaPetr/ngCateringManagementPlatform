@@ -1,0 +1,9 @@
+<form [formGroup]="menuCategoryForm">
+    <div class="mb-3">
+      <label for="nameCategory" class="form-label">Название категории</label>
+      <input type="text" formControlName="nameCategory" class="form-control" id="nameCategory">
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="createMenuCategory()" [disabled]="!menuCategoryForm.valid">Создать
+    </button>
+</form>

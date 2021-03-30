@@ -1,0 +1,33 @@
+<mat-card class="table-responsive ">
+    <mat-card-title >Название меню</mat-card-title >
+    <div class="mb-2">
+        <!-- Button trigger modal -->
+        <app-add-button [text]="'Создать'" (addClickEvent)="addMenu()"></app-add-button>
+    </div>
+
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let menu of menus">
+                <td class="text-center">{{menu.nameMenu}}</td>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm" [disabled]="menu.isActive"
+                        (click)="makeActiveMenu(menu)">Сделать активным
+                    </button>
+                </td>
+                <td>
+                    <div *ngIf="!menu.isActive">
+                        <app-edit-button (editClickEvent)="editMenu(menu)"></app-edit-button>
+                        <app-delete-button (deleteClickEvent)="deleteMenu(menu.id)"></app-delete-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>

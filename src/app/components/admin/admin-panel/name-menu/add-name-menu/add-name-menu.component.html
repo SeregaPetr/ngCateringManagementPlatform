@@ -1,0 +1,9 @@
+<form [formGroup]="menuForm">
+    <div class="mb-3">
+      <label for="nameMenu" class="form-label">Название меню</label>
+      <input type="text" formControlName="nameMenu" class="form-control" id="nameMenu">
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="createMenu()" [disabled]="!menuForm.valid">Создать
+    </button>
+</form>

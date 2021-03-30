@@ -1,0 +1,15 @@
+<!-- Modal -->
+<app-modal [modalTitle]="modalTitle" (closeClickEvent)="close()">
+    <div *ngIf='activateAddEditComp'>
+        <app-add-dish *ngIf="!dish.id" [dish]="dish"
+            (closeClickEvent)="close()" (createClickEvent)="createUpdate()">
+        </app-add-dish>
+        <app-edit-dish *ngIf="dish.id" [dish]="dish"
+            (closeClickEvent)="close()" (updateClickEvent)="createUpdate()">
+        </app-edit-dish>
+    </div>
+</app-modal>
+
+<app-show-dish [dishes]="dishes" (deleteClickEvent)="deleteDish($event)"
+    (editClickEvent)="editDish($event)" (addClickEvent)="addDish()">
+</app-show-dish>

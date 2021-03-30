@@ -1,0 +1,31 @@
+<mat-card *ngIf="unpaidOrders && unpaidOrders.length > 0" class="table-responsive">
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Дата</th>
+                <th scope="col">Официант</th>
+                <th scope="col">Стол</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Сумма</th>
+                <th scope="col">Тип оплаты</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let order of unpaidOrders">
+                <td>{{order.checkOpeningTime | date: 'dd.MM.YYYY, HH:mm'}}</td>
+                <td>{{order.firstNameWaiter}} {{order.lastNameWaiter}}</td>
+                <td>{{order.numberTable}}</td>
+                <td>{{order.statusOrder}}</td>
+                <td>{{orderAmount(order)}}</td>
+                <td>{{order.namePaymentType}}</td>
+                <td>
+                    <button type="button" class="btn btn-success" 
+                        *ngIf="order.statusOrder == 'Оплата'"
+                        (click)="confirmPayment(order.id)">Подтвердить
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>  

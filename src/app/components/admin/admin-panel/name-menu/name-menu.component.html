@@ -1,0 +1,16 @@
+<!-- Modal -->
+<app-modal [modalTitle]="modalTitle" (closeClickEvent)="close()">
+    <div *ngIf='activateAddEditComp'>
+        <app-add-name-menu *ngIf="!menu.id" [menu]="menu"
+            (closeClickEvent)="close()" (createClickEvent)="createUpdate()">
+        </app-add-name-menu>
+        <app-edit-name-menu *ngIf="menu.id" [menu]="menu"
+            (closeClickEvent)="close()" (updateClickEvent)="createUpdate()">
+        </app-edit-name-menu>
+    </div>
+</app-modal>
+
+<app-show-name-menu [menus]="menus" 
+    (makeActiveClickEvent)="makeActiveMenu($event)" (deleteClickEvent)="deleteMenu($event)" 
+    (editClickEvent)="editMenu($event)" (addClickEvent)="addMenu()">
+</app-show-name-menu>

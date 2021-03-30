@@ -1,0 +1,31 @@
+<mat-card *ngIf="tablesInfo && tablesInfo.length > 0" class="table-responsive">
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Номер стола</th>
+                <th scope="col">Логин</th>
+                <th scope="col">Пароль</th>
+                <th scope="col">Вместительность</th>
+                <th scope="col">Кол. гостей</th>
+                <th scope="col">Доступность</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let tableInfo of tablesInfo">
+                <td class="text-center">{{tableInfo.numberTable}}</td>
+                <td>{{tableInfo.email}}</td>
+                <td>{{tableInfo.password}}</td>
+                <td>{{tableInfo.capacityTable}}</td>
+                <td>{{tableInfo.numberGuests}}</td>
+                <td>{{tableInfo.isReservation == true ? "Занят" : "Свободен"}}</td>
+                <td>
+                    <button class="btn btn-success" [disabled]='!tableInfo.isReservation' 
+                        (click)="freeTable({tableId: tableInfo.tableId})">
+                        Освободить
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>

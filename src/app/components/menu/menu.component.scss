@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Pacifico&display=swap');
+
+.menu-component{
+   font-family: 'Arapey', serif;
+   font-style: italic;
+   font-size: 35px;
+   color:rgb(90, 45, 10);
+}
+
+.menu-composition-dish{
+    font-family: 'Pacifico', cursive;
+    font-size: 15px;
+    margin: -10px 10px 0px 15px;
+}
+
+.menu-dish-weight{
+    font-size: 28px;
+}
+
+.menu-category{
+    text-decoration: underline;
+}
+
+.menu-hr{
+    margin-top: 15px;
+}
+
+.callout-danger{
+    border-left-color:green;
+}

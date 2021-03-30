@@ -1,0 +1,21 @@
+<form [formGroup]="tableForm">
+    <div class="mb-3">
+      <label for="numberTable" class="form-label">Номер стола</label>
+      <input type="number" formControlName="numberTable" class="form-control" id="numberTable" >
+    </div>
+    <div class="mb-3">
+      <label for="capacityTable" class="form-label">Вместительность стола</label>
+      <input type="number" formControlName="capacityTable" class="form-control" id="capacityTable">
+    </div>
+    <div class="mb-3">
+        <label for="numberGuests" class="form-label">Количество гостей</label>
+        <input type="number" formControlName="numberGuests" class="form-control" id="numberGuests">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" formControlName="isReservation" class="form-check-input" id="exampleCheck">
+        <label class="form-check-label" for="exampleCheck" >Стол занят</label>
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="updateTable()" [disabled]="!tableForm.valid">Обновить
+    </button>
+</form>

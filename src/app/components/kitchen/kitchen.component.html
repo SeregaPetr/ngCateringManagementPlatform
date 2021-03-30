@@ -1,0 +1,29 @@
+<mat-card *ngIf="orderLinesForKitchen && orderLinesForKitchen.length > 0" class="table-responsive">
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Статус заказа</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let orderLine of orderLinesForKitchen" >
+                <td>{{orderLine.nameDish}}</td>
+                <td>{{orderLine.countPortions}}</td>
+                <td>{{orderLine.nameStatus}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" 
+                        *ngIf="orderLine.nameStatus=='Новый заказ'"
+                        (click)="takeOrder(orderLine)">Принять
+                    </button>
+                    <button type="button" class="btn btn-success" 
+                        *ngIf="orderLine.nameStatus=='Заказ в работе'"
+                        (click)="takeOrder(orderLine)">Выдать
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>  

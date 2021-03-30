@@ -1,0 +1,15 @@
+ <!-- Modal -->
+ <app-modal [modalTitle]="modalTitle" (closeClickEvent)="close()">
+    <div *ngIf='activateAddEditComp'>
+        <app-add-menu-category *ngIf="!menuCategory.id" [menuCategory]="menuCategory"
+            (closeClickEvent)="close()" (createClickEvent)="createUpdate()">
+        </app-add-menu-category>
+        <app-edit-menu-category *ngIf="menuCategory.id" [menuCategory]="menuCategory"
+            (closeClickEvent)="close()" (updateClickEvent)="createUpdate()">
+        </app-edit-menu-category>
+    </div>
+</app-modal>
+
+<app-show-menu-category [menuCategories]="menuCategories" (deleteClickEvent)="deleteMenuCategory($event)"
+    (editClickEvent)="editMenuCategory($event)" (addClickEvent)="addMenuCategory()">
+</app-show-menu-category>

@@ -1,0 +1,33 @@
+<mat-card class="table-responsive ">
+    <mat-card-title >Стол</mat-card-title >
+    <div class="mb-2">
+        <!-- Button trigger modal -->
+        <app-add-button [text]="'Создать'" (addClickEvent)="addClick()"></app-add-button>
+    </div>
+
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Номер стола</th>
+                <th scope="col">Доступность</th>
+                <th scope="col">Вместительность</th>
+                <th scope="col">Кол. гостей</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let table of tables">
+                <td class="text-center">{{table.numberTable}}</td>
+                <td>{{table.isReservation == true ? "Занят" : "Свободен"}}</td>
+                <td>{{table.capacityTable}}</td>
+                <td>{{table.numberGuests}}</td>
+                <td>
+                    <div>
+                        <app-edit-button (editClickEvent)="editClick(table)"></app-edit-button>
+                        <app-delete-button (deleteClickEvent)="deleteClick(table.id)"></app-delete-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>

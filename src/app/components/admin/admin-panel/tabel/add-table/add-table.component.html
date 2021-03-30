@@ -1,0 +1,13 @@
+<form [formGroup]="tableForm">
+    <div class="mb-3">
+      <label for="numberTable" class="form-label">Номер стола</label>
+      <input type="number" formControlName="numberTable" class="form-control" id="numberTable" >
+    </div>
+    <div class="mb-3">
+      <label for="capacityTable" class="form-label">Вместительность стола</label>
+      <input type="number" formControlName="capacityTable" class="form-control" id="capacityTable" >
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="createTable()" [disabled]="!tableForm.valid">Создать
+    </button>
+</form>
